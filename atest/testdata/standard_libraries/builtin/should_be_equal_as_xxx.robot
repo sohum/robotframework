@@ -85,6 +85,13 @@ Should Be Equal As Strings case-insensitive
     HYVÄÄ YÖTÄ    hyvää yötä    repr=yes    ignore_case=yes
     YÖTÄ          PÄIVÄÄ        ignore_case=True
 
+Should Be Equal As Strings strip spaces
+    [Documentation]    FAIL jumps\t over != \njumpsover
+    [Template]    Should Be Equal As Strings
+     ${SPACE}${SPACE}The${SPACE}quick${SPACE}${SPACE}\r    ${SPACE}The\r${SPACE}quick${SPACE}${SPACE}${SPACE}    strip_spaces=True
+     ${SPACE}\t brown fox \t    ${SPACE}\t brown fox \t    strip_spaces=leading
+     jumps\t${SPACE}over${SPACE}${SPACE}${SPACE}    \njumpsover\t\t    strip_spaces=trailing
+
 Should Be Equal As Strings repr
     [Documentation]    FAIL Several failures occurred:
     ...
